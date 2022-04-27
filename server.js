@@ -1,26 +1,34 @@
-// Initialize express
 const express = require('express')
-const app = express()
-
-// require handlebars
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+// const models = require('./data/models');
 
-// Use "main" as our default layout
+const app = express()
+
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main', handlebars: allowInsecurePrototypeAccess(Handlebars) }));
-// Use handlebars to render
 app.set('view engine', 'handlebars');
 
-// Tell our app to send the "hello world" message to our home page
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+require('./controllers/posts')(app);
+require('./data/reddit-db');
+
 app.get('/', (req, res) => {
     res.render('home', { msg: 'hey Chudier' });
 })
 
-// Choose a port to listen on
+app.get('/posts/new', (req, res) => {
+    res.render('posts-new');
+});
+
+// app.post('/posts/new', (req, res) => {
+//     console.log(req.body);
+// });
+
 const port = process.env.PORT || 3000;
 
-// Tell the app what port to listen on
 app.listen(port, () => {
   console.log('App listening on port 3000!')
 })
