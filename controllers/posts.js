@@ -8,7 +8,14 @@ module.exports = (app) => {
             console.log(err.message);
         })
     })
-
+   // SUBREDDIT
+    app.get('/n/:subreddit', (req, res) => {
+        Post.find({ subreddit: req.params.subreddit }).lean()
+        .then((posts) => res.render('posts-index', { posts }))
+        .catch((err) => {
+            console.log(err);
+        });
+    });
     // CREATE
     app.post('/posts/new', (req, res) => {
         // INSTANTIATE INSTANCE OF POST MODEL
@@ -17,5 +24,4 @@ module.exports = (app) => {
         // SAVE INSTANCE OF POST MODEL TO DB AND REDIRECT TO THE ROOT
         post.save(() => res.redirect('/'));
     });
-
 };
