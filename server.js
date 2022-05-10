@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 require('./controllers/posts')(app);
 require('./data/reddit-db');
+require('./controllers/comments.js')(app);
 
 app.get('/', (req, res) => {
     res.render('home', { msg: 'hey Chudier' });
