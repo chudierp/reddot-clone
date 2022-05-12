@@ -40,7 +40,7 @@ module.exports = (app) => {
             user.comparePassword(password, (err, isMatch) => {
             if (!isMatch) {
                 // Password does not match
-                return res.status(401).send({ message: 'Wrong Username or password' });
+                return res.status(401).send({ message: 'Wrong User or password' });
             }
             // Create a token
             const token = jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET, {
