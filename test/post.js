@@ -87,6 +87,6 @@ describe('Posts', function () {
             })
             .catch(function (err) {
                 done(err);
-            });
+            }); 
     });
 });
