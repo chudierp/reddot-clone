@@ -1,16 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">REDDIT CLONE</a>
+<nav class="navbar navbar-expand-sm navbar-light bg-light ">
+  <a class="navbar-brand" href="/">reddit clone</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-
+    target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-
+    expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home</a>
-        <li><a href="/posts/new" class="btn btn-primary navbar-btn">New Post</a></li>
-      </li>
-    </ul>
+    <div class="navbar-nav ml-auto">
+            <a class="btn btn-primary navbar-btn" href="/posts/new">new post</a>
+            <a class="nav-item nav-link mx-3" href="/logout">logout</a>
+            <a class="nav-item nav-link mx-3" href="/login">login</a>
+            <a class="nav-item nav-link ml-3" href="/sign-up">sign up</a>
+      </div>
   </div>
 </nav>
+
+
+
+
+
+
+ {{!-- <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      <li><a href="/posts/new" class="btn btn-primary navbar-btn">New Post</a></li>
+      </li>
+    </ul>
+
+    <ul class="nav-item nav-link mx-3">
+      <li><a href="/logout">Logout</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/sign-up">Sign Up</a></li>
+    </ul> --}}
