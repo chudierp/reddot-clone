@@ -24,7 +24,7 @@ module.exports = (app) => {
         if (req.user) {
             const userId = req.user._id;
             const post = new Post(req.body);
-            // post.author = userId;
+            post.author = userId;
 
             post
                 .save()
@@ -44,9 +44,9 @@ module.exports = (app) => {
     });
 
      // SHOW
-    app.get('/posts/:id', (req, res) => {
+    app.get('/posts/:id',  (req, res) => {
         const currentUser = req.user;
-        Post.findById(req.params.id).populate('comments').lean().populate('comments').populate('author')
+        Post.findById(req.params.id).lean().populate({ path:'comments', populate: { path: 'author' } }).populate('author')
             .then((post) => res.render('posts-show', { post, currentUser }))
             .catch((err) => {
                 console.log(err.message);
