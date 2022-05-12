@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const cookieParser = require('cookie-parser');
+const checkAuth = require('./middleware/checkAuth');
 // const models = require('./data/models');
 
 const app = express()
@@ -15,6 +16,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(checkAuth);
 
 require('./controllers/posts')(app);
 require('./data/reddit-db');
