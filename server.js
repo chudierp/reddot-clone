@@ -22,6 +22,7 @@ require('./controllers/posts')(app);
 require('./data/reddit-db');
 require('./controllers/comments.js')(app);
 require('./controllers/auth.js')(app);
+require('./controllers/replies.js')(app);
 
 app.get('/', (req, res) => {
     res.render('home', { msg: 'hey Chudier' });
